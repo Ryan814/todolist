@@ -1,0 +1,30 @@
+<div class="errorbox">
+	<% if @todo.errors.present? %>
+		<ul>
+			<% @todo.errors.each do |error, message| %>
+					<li><%= "#{error.capitalize} #{message}" %></li>
+				<% end %>
+		</ul>
+	<% end %>
+</div>
+
+<div class="itembox">
+	<%= form_for @todo do |f| %>
+		<%= f.label :title, 'Mission' %>
+		<br>
+		<%= f.text_area :title %>
+		<br>
+		<%= f.label :due_date, 'Due date' %>
+		<br>
+		<%= f.date_select :due_date %>
+		<br>
+		<%= f.label :note, 'Note' %>
+		<br>
+		<%= f.text_area :note %>
+		<br>
+		<div class="itembox_btn">
+			<%= f.submit button, class: 'btn btn-success' %>
+      <%= link_to 'BACK', :back, class: 'btn btn-default' %>
+		</div>
+	<% end %>
+</div>

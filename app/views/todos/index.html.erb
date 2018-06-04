@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>To Do List</h1>
+    <div class="row col-md-6 col-md-offset-2 custyle ">
+    <table class="table table-striped custab">
+    <thead>
+    <%= link_to '<b>+</b>ADD'.html_safe, new_todo_path, class: 'btn btn-primary btn-xs pull-right'%>
+        <tr>
+            <th>Date</th>
+            <th>Mission</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+        <% @todos.each do |todo| %>
+            <tr>
+                <td><%= todo.due_date %></td>
+                <td><%= link_to todo.title, todo_path(todo) %></td>
+                <td class="text-center">
+                    <%= todo_edit_button(todo) %>
+                    <%= todo_delete_button(todo) %>
+                </td>
+            </tr>
+        <% end %>
+    </table>
+    </div>
+</div>
